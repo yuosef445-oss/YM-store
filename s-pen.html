@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>أقلام اللمس - متجرنا</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* الأنماط المضمنة هنا هي فقط لتخصيصات محددة لهذه الصفحة،
+       يفضل نقلها إلى style.css إذا كانت عامة أو متكررة. */
+    body {
+      font-family: 'Tahoma', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 32px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .container { /* لم يتم استخدام هذا الكلاس في الهيكل الجديد */
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.05);
+    }
+
+    .product h2 {
+      font-size: 20px;
+      margin: 15px 0 10px;
+    }
+
+    .product ul {
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .product ul li {
+      margin: 5px 0;
+    }
+
+    .price {
+      font-size: 18px;
+      color: #27ae60; /* تم توحيد اللون مع اللون الأساسي للأزرار */
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* تخصيص حاوية المنتجات */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px; /* المسافة بين المنتجات */
+    }
+
+    /* ضبط عرض المنتجات */
+    .product {
+      width: calc(33% - 20px); /* 3 أعمدة مع مسافة 20px */
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="products.html">المنتجات</a></li>
+        <li><a href="mobiles.html">الهواتف</a></li>
+        <li><a href="laptops.html">الحواسيب</a></li>
+        <li><a href="gpu.html">كروت شاشة</a></li>
+        <li><a href="keyboards.html">لوحة المفاتيح</a></li>
+        <li><a href="mouse.html">فأرة</a></li>
+        <li><a href="headphones.html">سماعات</a></li>
+        <li><a href="smart-watches.html">ساعات ذكية</a></li>
+        <li><a href="power-bank.html">بطارية محمولة</a></li>
+        <li><a href="flash-memory.html">فلاش ميموري</a></li>
+        <li><a href="speaker.html">سبيكر</a></li>
+        <li><a href="s-pen.html" class="active">قلم لمس</a></li>
+        <li><a href="xbox.html">Xbox</a></li>
+        <li><a href="playstation.html">PlayStation</a></li>
+        <li><a href="screens.html">شاشات</a></li>
+        <li><a href="cpu.html">معالجات</a></li>
+        <li><a href="cart.html">سلة المشتريات</a></li>
+        <li><a href="login.html">تسجيل الدخول</a></li>
+        <li><a href="signup.html">إنشاء حساب</a></li>
+        <li><a href="chatbot.html">الدردشة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="products">
+    <h2>أقلام اللمس المتاحة</h2>
+    <div class="product">
+      <img src="image/29.jpg" width="300px" height="200px" alt="قلم UGREEN Pencil">
+      <h2>قلم UGREEN Pencil</h2>
+      <ul>
+        <li>التصميم: قلم ذكي مع لوحة لمسية (Touch Switch Design)</li>
+        <li>الميزات: تشغيل مباشر عبر اللمس (Touch And Go)</li>
+        <li>التوافق: مناسب للأجهزة اللوحية والشاشات الحساسة للمس</li>
+      </ul>
+      <p class="price">$39</p>
+      <button data-product-name="قلم UGREEN Pencil">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="image/30.jpg" width="300px" height="200px" alt="قلم آبل Pencil Midnight Green Edition">
+      <h2>قلم آبل Pencil Midnight Green Edition</h2>
+      <ul>
+        <li>التصميم: لون أخضر داكن (Midnight Green)</li>
+        <li>الشكل: تصميم متكامل (Seamless Design) مع طبقة غير لامعة (Matt Finish)</li>
+        <li>الميزات: حساسية للضغط والميل (Tilt and Pressure Sensitivity)</li>
+        <li>التحكم: تغيير الأدوات عبر التصفيق المزدوج (Double-Tap to Change Tools)</li>
+      </ul>
+      <p class="price">$129</p>
+      <button data-product-name="قلم آبل Pencil Midnight Green Edition">إضافة إلى السلة</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 متجرنا. جميع الحقوق محفوظة.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

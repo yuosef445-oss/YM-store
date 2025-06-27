@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تسجيل الدخول - متجرنا</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="products.html">المنتجات</a></li>
+        <li><a href="cart.html">سلة المشتريات</a></li>
+        <li><a href="login.html" class="active">تسجيل الدخول</a></li>
+        <li><a href="signup.html">إنشاء حساب</a></li>
+        <li><a href="chatbot.html">الدردشة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="login-form">
+    <h2>تسجيل الدخول</h2>
+
+    <!-- رسالة الخطأ -->
+    <div id="error-message" class="error-message" style="display: none; color: red; margin-bottom: 15px;"></div>
+
+    <form onsubmit="handleLogin(event)">
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" required>
+
+      <label for="password">كلمة المرور:</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">دخول</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 متجرنا. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <!-- يمكنك وضع هذا داخل ملف script.js إذا كنت تريد فصله -->
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error-message');
+
+      // التحقق من الحقول
+      if (!email || !password) {
+        errorDiv.textContent = 'يرجى ملء جميع الحقول';
+        errorDiv.style.display = 'block';
+        return;
+      }
+
+      // محاكاة تسجيل الدخول (بدون خادم)
+      const storedUser = localStorage.getItem('user');
+      if (!storedUser) {
+        errorDiv.textContent = 'لا يوجد حساب بهذا البريد الإلكتروني';
+        errorDiv.style.display = 'block';
+        return;
+      }
+
+      const user = JSON.parse(storedUser);
+      if (user.email !== email) {
+        errorDiv.textContent = 'البريد الإلكتروني غير صحيح';
+        errorDiv.style.display = 'block';
+        return;
+      }
+
+      // هنا يمكنك إضافة التحقق من كلمة المرور (في المستقبل مع خادم)
+      alert('تم تسجيل الدخول بنجاح!');
+      window.location.href = 'index.html'; // إعادة التوجيه
+    }
+  function handleLogin(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+      alert("يرجى ملء جميع الحقول");
+      return;
+    }
+
+    // تخزين بيانات المستخدم (مثالي بدون خادم)
+    localStorage.setItem("user", JSON.stringify({ email }));
+
+    alert("تم تسجيل الدخول بنجاح!");
+    window.location.href = "index.html";
+  }
+
+  </script>
+</body>
+</html>

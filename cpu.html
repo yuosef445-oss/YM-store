@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>المعالجات - متجرنا</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* الأنماط المضمنة هنا هي فقط لتخصيصات محددة لهذه الصفحة،
+       يفضل نقلها إلى style.css إذا كانت عامة أو متكررة. */
+    body {
+      font-family: 'Tahoma', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 32px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .container { /* لم يتم استخدام هذا الكلاس في الهيكل الجديد */
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.05);
+    }
+
+    .product h2 {
+      font-size: 20px;
+      margin: 15px 0 10px;
+    }
+
+    .product ul {
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .product ul li {
+      margin: 5px 0;
+    }
+
+    .price {
+      font-size: 18px;
+      color: #27ae60; /* تم توحيد اللون مع اللون الأساسي للأزرار */
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* تخصيص حاوية المنتجات */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px; /* المسافة بين المنتجات */
+    }
+
+    /* ضبط عرض المنتجات */
+    .product {
+      width: calc(33% - 20px); /* 3 أعمدة مع مسافة 20px */
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="products.html">المنتجات</a></li>
+        <li><a href="mobiles.html">الهواتف</a></li>
+        <li><a href="laptops.html">الحواسيب</a></li>
+        <li><a href="gpu.html">كروت شاشة</a></li>
+        <li><a href="keyboards.html">لوحة المفاتيح</a></li>
+        <li><a href="mouse.html">فأرة</a></li>
+        <li><a href="headphones.html">سماعات</a></li>
+        <li><a href="smart-watches.html">ساعات ذكية</a></li>
+        <li><a href="power-bank.html">بطارية محمولة</a></li>
+        <li><a href="flash-memory.html">فلاش ميموري</a></li>
+        <li><a href="speaker.html">سبيكر</a></li>
+        <li><a href="s-pen.html">قلم لمس</a></li>
+        <li><a href="xbox.html">Xbox</a></li>
+        <li><a href="playstation.html">PlayStation</a></li>
+        <li><a href="screens.html">شاشات</a></li>
+        <li><a href="cpu.html" class="active">معالجات</a></li>
+        <li><a href="cart.html">سلة المشتريات</a></li>
+        <li><a href="login.html">تسجيل الدخول</a></li>
+        <li><a href="signup.html">إنشاء حساب</a></li>
+        <li><a href="chatbot.html">الدردشة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="products">
+    <h2>المعالجات المتاحة</h2>
+    <div class="product">
+      <img src="image/68.jpg" width="300px" height="200px" alt="معالج Intel Core i5 الجيل 13">
+      <h2>Intel Core i5 – الجيل 13</h2>
+      <ul>
+        <li>استخدامات يومية وألعاب</li>
+        <li>توازن بين الأداء والسعر</li>
+      </ul>
+      <p class="price">$200</p>
+      <button data-product-name="Intel Core i5 – الجيل 13">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="image/69.jpg" width="300px" height="200px" alt="معالج Intel Core i7 الجيل 13">
+      <h2>Intel Core i7 – الجيل 13</h2>
+      <ul>
+        <li>أداء أعلى للمهام الثقيلة</li>
+        <li>يدعم Hyper-Threading وDDR5</li>
+      </ul>
+      <p class="price">$350</p>
+      <button data-product-name="Intel Core i7 – الجيل 13">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="image/70.jpg" width="300px" height="200px" alt="معالج Intel Core i9 الجيل 13">
+      <h2>Intel Core i9 – الجيل 13</h2>
+      <ul>
+        <li>أفضل معالج للكمبيوترات عالية الأداء</li>
+        <li>مناسب للتحرير والألعاب والبرمجة</li>
+      </ul>
+      <p class="price">$600</p>
+      <button data-product-name="Intel Core i9 – الجيل 13">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="image/71.jpg" width="300px" height="200px" alt="معالج Intel Core Ultra 7">
+      <h2>Intel Core Ultra 7</h2>
+      <ul>
+        <li>معالجات جديدة لحواسيب الهجين</li>
+        <li>عمر بطارية أفضل واستهلاك طاقة أقل</li>
+      </ul>
+      <p class="price">$450</p>
+      <button data-product-name="Intel Core Ultra 7">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="image/72.jpg" width="300px" height="200px" alt="معالج AMD Ryzen 5 الجيل 7000">
+      <h2>AMD Ryzen 5 – الجيل 7000</h2>
+      <ul>
+        <li>مناسبة للاعبين والمبدعين</li>
+        <li>دعم DDR5 وPCIe 5.0</li>
+      </ul>
+      <p class="price">$220</p>
+      <button data-product-name="AMD Ryzen 5 – الجيل 7000">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="image/73.jpg" width="300px" height="200px" alt="معالج AMD Ryzen 7 الجيل 7000">
+      <h2>AMD Ryzen 7 – الجيل 7000</h2>
+      <ul>
+        <li>أداء عالي في الألعاب والمعالجة المتعددة</li>
+        <li>يدعم DDR5 وPCIe 5.0</li>
+      </ul>
+      <p class="price">$380</p>
+      <button data-product-name="AMD Ryzen 7 – الجيل 7000">إضافة إلى السلة</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 متجرنا. جميع الحقوق محفوظة.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>إنشاء حساب - متجرنا</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="products.html">المنتجات</a></li>
+        <li><a href="cart.html">سلة المشتريات</a></li>
+        <li><a href="login.html">تسجيل الدخول</a></li>
+        <li><a href="signup.html" class="active">إنشاء حساب</a></li>
+        <li><a href="chatbot.html">الدردشة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="signup-form">
+    <h2>إنشاء حساب جديد</h2>
+    <form onsubmit="handleSignup(event)">
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" required>
+
+      <label for="password">كلمة المرور:</label>
+      <input type="password" id="password" required>
+
+      <label for="confirm-password">تأكيد كلمة المرور:</label>
+      <input type="password" id="confirm-password" required>
+
+      <button type="submit">إنشاء الحساب</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 متجرنا. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <!-- يمكنك وضع هذا في script.js إذا كنت تريد فصله -->
+  <script>
+    function handleSignup(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (!email || !password || !confirmPassword) {
+        alert('يرجى ملء جميع الحقول');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('كلمات المرور غير متطابقة');
+        return;
+      }
+
+      if (password.length < 6) {
+        alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
+        return;
+      }
+
+      // تخزين المستخدم (مثال بسيط باستخدام localStorage)
+      localStorage.setItem('user', JSON.stringify({ email }));
+
+      alert('تم إنشاء الحساب بنجاح!');
+      window.location.href = 'login.html'; // إعادة توجيه إلى صفحة تسجيل الدخول
+    }
+  function handleSignup(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+
+    if (!email || !password || !confirmPassword) {
+      alert("يرجى ملء جميع الحقول");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("كلمات المرور غير متطابقة");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("يجب أن تكون كلمة المرور 6 أحرف على الأقل");
+      return;
+    }
+
+    // تخزين المستخدم (بدون خادم)
+    localStorage.setItem("user", JSON.stringify({ email }));
+    alert("تم إنشاء الحساب بنجاح!");
+    window.location.href = "login.html";
+  }
+
+  </script>
+</body>
+</html>

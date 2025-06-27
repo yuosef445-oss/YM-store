@@ -1,0 +1,602 @@
+/*
+ * ملف الأنماط العام (style.css)
+ * يحتوي على الأنماط الأساسية والعامة للمتجر الإلكتروني.
+ *
+ * الفهرس:
+ * 1. المتغيرات الأساسية (CSS Variables)
+ * 2. الأنماط العامة (Base Styles)
+ * 3. شريط التنقل (Navigation Bar)
+ * 4. الأزرار (Buttons)
+ * 5. النماذج (Forms - تسجيل الدخول وإنشاء حساب)
+ * 6. أقسام المنتجات والبطاقات (Product Sections & Cards)
+ * 7. سلة المشتريات (Cart Section)
+ * 8. قسم الدردشة (Chatbot Section)
+ * 9. قسم البطل (Hero Section - الصفحة الرئيسية)
+ * 10. تذييل الصفحة (Footer)
+ * 11. الأنماط التفاعلية (Media Queries for Responsiveness)
+ */
+
+/* 1. المتغيرات الأساسية (CSS Variables) */
+:root {
+    /* الألوان */
+    --primary-color: #3498db; /* أزرق فاتح */
+    --secondary-color: #2c3e50; /* أزرق داكن/رمادي */
+    --accent-color: #4CAF50; /* أخضر (للتأكيد/النجاح) */
+    --text-color: #333;
+    --light-text-color: #fff;
+    --background-light: #f5f7fa;
+    --background-card: #fff;
+    --border-color: #ccc;
+    --error-color: #e74c3c; /* أحمر */
+
+    /* الخطوط */
+    --font-primary: 'Tajawal', sans-serif;
+    --font-secondary: 'Tahoma', sans-serif;
+
+    /* المسافات */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    --spacing-xxl: 50px;
+
+    /* نصف قطر الحدود (Border Radius) */
+    --border-radius-sm: 8px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 30px;
+
+    /* الظلال (Box Shadows) */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. الأنماط العامة (Base Styles) */
+body {
+    font-family: var(--font-primary);
+    background: var(--background-light);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: var(--text-color);
+    direction: rtl; /* لضمان دعم اللغة العربية بشكل افتراضي */
+}
+
+/* إعادة تعيين بعض الأنماط الافتراضية للمتصفح */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* يزيل المسافة السفلية غير المرغوب فيها تحت الصور */
+}
+
+/* 3. شريط التنقل (Navigation Bar) */
+nav {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 1000;
+    margin: var(--spacing-md) auto; /* توسيط شريط التنقل */
+    max-width: 95%; /* لضمان عدم تجاوز العرض على الشاشات الكبيرة */
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+}
+
+nav ul li a {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--light-text-color);
+    padding: 12px 22px;
+    border-radius: var(--border-radius-lg);
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-weight: bold;
+    white-space: nowrap;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* لتحديد موضع المؤشر النشط */
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: var(--light-text-color);
+    color: var(--secondary-color);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+/* مؤشر حالة النشاط تحت الرابط النشط */
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: var(--light-text-color);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 80%;
+}
+
+/* 4. الأزرار (Buttons) */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, var(--accent-color), #45a049);
+    color: var(--light-text-color);
+    font-family: var(--font-primary);
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* 5. النماذج (Forms - تسجيل الدخول وإنشاء حساب) */
+.login-form, .signup-form {
+    max-width: 500px;
+    margin: var(--spacing-xl) auto;
+    background: var(--background-card);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    direction: rtl;
+    text-align: right; /* محاذاة النص داخل النموذج لليمين */
+}
+
+.login-form h2, .signup-form h2 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.login-form label, .signup-form label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.login-form input, .signup-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form input:focus, .signup-form input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* ظل خفيف عند التركيز */
+}
+
+.login-form button, .signup-form button {
+    width: 100%;
+    margin-top: var(--spacing-md);
+}
+
+/* 6. أقسام المنتجات والبطاقات (Product Sections & Cards) */
+.products-section, .products, .cart, .chatbot {
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin: var(--spacing-xl) auto;
+    max-width: 1200px; /* تحديد أقصى عرض للمحتوى */
+    background: var(--background-card);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.products-section h2, .products h2, .cart h2, .chatbot h2 {
+    margin-bottom: var(--spacing-lg);
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.products, .categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md); /* المسافة بين المنتجات */
+}
+
+.product, .category-card {
+    background-color: var(--background-card);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    width: 300px; /* عرض ثابت للبطاقة */
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* استخدام فليكس بوكس لتنسيق المحتوى الداخلي */
+    flex-direction: column;
+    justify-content: space-between; /* توزيع المحتوى بشكل متساوٍ */
+}
+
+.product:hover, .category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md);
+}
+
+.product img, .category-card img {
+    width: 100%;
+    height: 200px; /* ارتفاع ثابت للصور */
+    object-fit: cover; /* لضمان تغطية الصورة للمساحة دون تشويه */
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+    transition: transform 0.5s ease;
+}
+
+.product:hover img, .category-card:hover img {
+    transform: scale(1.02); /* تكبير طفيف عند التحويم */
+}
+
+.product h2, .category-card h4 {
+    font-size: 1.25rem;
+    margin: var(--spacing-sm) 0;
+    color: var(--secondary-color);
+}
+
+.product p, .category-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1; /* للسماح للنص بملء المساحة المتاحة */
+}
+
+.product ul {
+    text-align: right;
+    padding-right: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    color: #555;
+    flex-grow: 1;
+}
+
+.product ul li {
+    margin: var(--spacing-xs) 0;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+/* شريط التنقل الداخلي للمنتجات */
+.product-nav {
+    background: var(--primary-color);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-lg) auto;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-md);
+    max-width: 95%;
+}
+
+.product-nav a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    padding: 12px 25px;
+    border-radius: var(--border-radius-lg);
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.product-nav a:hover,
+.product-nav a.active {
+    background: var(--light-text-color);
+    color: var(--secondary-color);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-nav a i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.product-nav a:hover i {
+    transform: scale(1.2);
+}
+
+/* 7. سلة المشتريات (Cart Section) */
+.cart ul#cart-items {
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+    text-align: right;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    min-height: 100px; /* لضمان ظهور المساحة حتى لو كانت فارغة */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end; /* محاذاة العناصر لليمين */
+}
+
+.cart ul#cart-items li {
+    padding: var(--spacing-sm);
+    border-bottom: 1px dashed #eee;
+    width: 100%;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.cart ul#cart-items li:last-child {
+    border-bottom: none;
+}
+
+.cart ul#cart-items p { /* لرسالة "سلة المشتريات فارغة" */
+    padding: var(--spacing-md);
+    color: #888;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+}
+
+/* 8. قسم الدردشة (Chatbot Section) */
+.chatbot #chat-box {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    height: 400px; /* ارتفاع ثابت لصندوق الدردشة */
+    overflow-y: auto; /* تمكين التمرير إذا تجاوز المحتوى الارتفاع */
+    text-align: right;
+    background-color: #fcfcfc;
+}
+
+.chatbot #chat-box div {
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    max-width: 80%; /* لضمان عدم امتداد الرسائل على عرض الشاشة بالكامل */
+    word-wrap: break-word; /* لكسر الكلمات الطويلة */
+}
+
+.chatbot #chat-box div strong {
+    color: var(--primary-color);
+}
+
+.chatbot #chat-box div.loading {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+}
+
+.chatbot div:last-child { /* حاوية الإدخال والزر */
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.chatbot #user-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+}
+
+.chatbot button {
+    padding: 12px 25px;
+    white-space: nowrap; /* منع الزر من الانقسام إلى سطرين */
+}
+
+/* 9. قسم البطل (Hero Section - الصفحة الرئيسية) */
+.hero {
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* تدرج أزرق فاتح */
+    color: var(--light-text-color);
+    padding: var(--spacing-xxl) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-xl) auto;
+    max-width: 1200px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* لإخفاء أي عناصر تتجاوز الحدود */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--light-text-color);
+    animation: fadeInDown 1s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInUp 1s ease 0.5s backwards; /* تأخير بسيط للرسوم المتحركة */
+}
+
+.hero .logo {
+    color: rgb(3, 171, 243);
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+/* الرسوم المتحركة */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 10. تذييل الصفحة (Footer) */
+footer {
+    text-align: center;
+    margin-top: var(--spacing-xxl);
+    padding: var(--spacing-md);
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 11. الأنماط التفاعلية (Media Queries for Responsiveness) */
+
+/* للهواتف الصغيرة والأجهزة اللوحية (أقل من 768 بكسل) */
+@media (max-width: 768px) {
+    nav ul {
+        justify-content: center;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-sm);
+    }
+
+    nav ul li a {
+        text-align: center;
+        padding: 14px;
+        font-size: 1.1rem;
+    }
+
+    nav ul li a.active::after {
+        bottom: -3px;
+        height: 2px;
+    }
+
+    .login-form, .signup-form, .products-section, .products, .cart, .chatbot, .hero, footer {
+        margin: var(--spacing-lg) var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .product, .category-card {
+        width: 100%; /* عرض كامل للبطاقات على الشاشات الصغيرة */
+        max-width: 350px; /* تحديد أقصى عرض للبطاقة */
+        margin: auto; /* توسيط البطاقات */
+    }
+
+    .product-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    .product-nav a {
+        width: 90%;
+        text-align: center;
+        padding: 10px 15px;
+    }
+
+    .chatbot #chat-box {
+        height: 300px; /* تقليل ارتفاع صندوق الدردشة على الجوال */
+    }
+}
+
+/* للهواتف الأصغر (أقل من 480 بكسل) */
+@media (max-width: 480px) {
+    nav {
+        padding: var(--spacing-sm);
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .login-form, .signup-form {
+        padding: var(--spacing-md);
+    }
+
+    .product img, .category-card img {
+        height: 150px; /* تقليل ارتفاع الصور على الشاشات الأصغر */
+    }
+}

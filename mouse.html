@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>الفأرة - متجرنا</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* الأنماط المضمنة هنا هي فقط لتخصيصات محددة لهذه الصفحة،
+       يفضل نقلها إلى style.css إذا كانت عامة أو متكررة. */
+    body {
+      font-family: 'Tahoma', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 32px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .container { /* لم يتم استخدام هذا الكلاس في الهيكل الجديد */
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.05);
+    }
+
+    .product h2 {
+      font-size: 20px;
+      margin: 15px 0 10px;
+    }
+
+    .product ul {
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .product ul li {
+      margin: 5px 0;
+    }
+
+    .price {
+      font-size: 18px;
+      color: #27ae60; /* تم توحيد اللون مع اللون الأساسي للأزرار */
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* تخصيص حاوية المنتجات */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px; /* المسافة بين المنتجات */
+    }
+
+    /* ضبط عرض المنتجات */
+    .product {
+      width: calc(33% - 20px); /* 3 أعمدة مع مسافة 20px */
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="products.html">المنتجات</a></li>
+        <li><a href="mobiles.html">الهواتف</a></li>
+        <li><a href="laptops.html">الحواسيب</a></li>
+        <li><a href="gpu.html">كروت شاشة</a></li>
+        <li><a href="keyboards.html">لوحة المفاتيح</a></li>
+        <li><a href="mouse.html" class="active">فأرة</a></li>
+        <li><a href="headphones.html">سماعات</a></li>
+        <li><a href="smart-watches.html">ساعات ذكية</a></li>
+        <li><a href="power-bank.html">بطارية محمولة</a></li>
+        <li><a href="flash-memory.html">فلاش ميموري</a></li>
+        <li><a href="speaker.html">سبيكر</a></li>
+        <li><a href="s-pen.html">قلم لمس</a></li>
+        <li><a href="xbox.html">Xbox</a></li>
+        <li><a href="playstation.html">PlayStation</a></li>
+        <li><a href="screens.html">شاشات</a></li>
+        <li><a href="cpu.html">معالجات</a></li>
+        <li><a href="cart.html">سلة المشتريات</a></li>
+        <li><a href="login.html">تسجيل الدخول</a></li>
+        <li><a href="signup.html">إنشاء حساب</a></li>
+        <li><a href="chatbot.html">الدردشة</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="products">
+    <h2>الفأرات المتاحة</h2>
+    <div class="product">
+      <img src="image/12.jpg" width="300px" height="200px" alt="فأرة لوجيتك G502 للألعاب">
+      <h2>فأرة لوجيتك G502 للألعاب</h2>
+      <ul>
+        <li>الدقة: 25,600 DPI</li>
+        <li>النوع: فأرة سلكية (موصولة بسلك)</li>
+        <li>التقنية: حساس بصري (Optical Sensor)</li>
+        <li>الإضاءة: إضاءة RGB قابلة للتخصيص</li>
+      </ul>
+      <p class="price">$79</p>
+      <button data-product-name="فأرة لوجيتك G502 للألعاب">إضافة إلى السلة</button>
+    </div> 
+
+    <div class="product">
+      <img src="image/13.jpg" width="300px" height="200px" alt="فأرة SteelSeries Rival 650 Black للألعاب">
+      <h2>فأرة SteelSeries Rival 650 Black للألعاب</h2>
+      <ul>
+        <li>الدقة: 12,000 DPI</li>
+        <li>التصميم: مخصص لليمين (للأشخاص الذين يستخدمون اليد اليمنى)</li>
+        <li>الإضاءة: إضاءة RGB قابلة للتخصيص</li>
+        <li>الميزات: تصميم مريح، وزن خفيف، ومناسب للألعاب</li>
+      </ul>
+      <p class="price">$69</p>
+      <button data-product-name="فأرة SteelSeries Rival 650 Black للألعاب">إضافة إلى السلة</button>
+    </div>
+
+    <div class="product">
+      <img src="image/14.jpg" width="300px" height="200px" alt="فأرة MASTER اللاسلكية للألعاب">
+      <h2>فأرة MASTER اللاسلكية للألعاب</h2>
+      <ul>
+        <li>البطارية: عمر بطارية يصل إلى 75 ساعة (بدون إضاءة RGB)</li>
+        <li>الوضعيات:  
+          <ul style="list-style: none; padding-right: 0;">
+            <li>- 75 ساعة (بدون إضاءة RGB)</li>
+            <li>- 40 ساعة (مع تشغيل الإضاءة RGB)</li>
+            <li>- وضع النوم التلقائي بعد 10 دقائق من عدم الاستخدام</li>
+          </ul>
+        </li>
+        <li>الإضاءة: إضاءة RGB متعددة الألوان على الجوانب</li>
+        <li>الميزات: تصميم أنيق، وزن خفيف، ومناسب للألعاب المكثفة</li>
+      </ul>
+      <p class="price">$59</p>
+      <button data-product-name="فأرة MASTER اللاسلكية للألعاب">إضافة إلى السلة</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 متجرنا. جميع الحقوق محفوظة.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

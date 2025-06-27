@@ -2,4 +2,3 @@ flask
 werkzeug
 requests
 flask-cors
-sqlite3
